@@ -159,7 +159,9 @@ jobs:
             # platy-aprs has no stable release at all; then the fallback is
             # null and the flasher says there is nothing to flash yet, rather
             # than offering a tag that may not exist.
-            FW=$(gh api "repos/${FIRMWARE_REPO}/releases/latest" -q .tag_name 2>/dev/null || true)
+            # gh api prints the 404 error body to stdout, so discard the
+            # output on failure instead of treating it as a tag.
+            FW=$(gh api "repos/${FIRMWARE_REPO}/releases/latest" -q .tag_name 2>/dev/null) || FW=""
           else
             FW="$FW_INPUT"
           fi
