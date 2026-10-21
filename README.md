@@ -76,6 +76,21 @@ The Dockerfile uses `--platform=$BUILDPLATFORM`, which needs BuildKit
 container on host port **10081** (`http`, forward the whole host). TLS is
 terminated there, which the flasher needs (see below).
 
+### OTA proxy at ota.platy.sumat.org
+
+The device has no TLS, so on-device updates go through a second NPM proxy host,
+`ota.platy.sumat.org`, pointing at the same container (host port **10081**)
+over **plain HTTP — no SSL certificate, no Force SSL**. It mirrors
+`ota.camillia.sumat.org`. The container's `nginx.conf` serves:
+
+| Path | Answers with |
+|---|---|
+| `/firmware/latest` | GitHub's `/repos/oumike/platy-aprs/releases/latest` JSON (stable only; the device reads `tag_name`) |
+| `/firmware/<tag>/<asset>` | the release asset, following GitHub's redirect server-side |
+
+For example `http://ota.platy.sumat.org/firmware/v0.2.0/platy-aprs-m9-v0.2.0-app.bin`.
+`/firmware/latest` returns GitHub's 404 until platy-aprs has a stable release.
+
 ### A note on Web Serial
 
 The in-browser flasher uses the Web Serial API, which only runs in secure
