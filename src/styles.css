@@ -413,61 +413,23 @@ section[id]:focus { outline: none; }
   text-align: center;
 }
 
-/* There is no capture off the hardware yet, so the hero draws the monitor
-   screen as text at the panel's 320x240, in the firmware's LVGL colors:
-   amber for RF, grey for APRS-IS, blue for what we sent. */
-.lcd {
-  display: flex;
-  flex-direction: column;
-  aspect-ratio: 4 / 3;
+/* A real capture of the M9's monitor (320x240, saved at 2x), in a bezel. */
+.hero-shot {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: var(--radius-screen);
   border: 1px solid var(--divider-hi);
-  background: #12161b;
-  color: #e6ebf1;
-  font-family: var(--font-mono);
-  font-size: clamp(0.62rem, 1.35vw, 0.8rem);
-  line-height: 1.45;
-  overflow: hidden;
   box-shadow:
     0 0 0 6px color-mix(in srgb, var(--panel-alt) 55%, transparent),
     0 24px 60px -24px rgb(0 0 0 / 0.55);
 }
-.lcd-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 10px;
-  background: #1b2027;
-  color: #9aa4b2;
-}
-.lcd-bar b { color: #3fa7ff; font-weight: 500; }
-.lcd-rows {
-  flex: 1;
-  margin: 0;
-  padding: 8px 10px;
-  list-style: none;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.lcd-rows li { overflow: hidden; text-overflow: ellipsis; }
-.lcd-rows time { color: #9aa4b2; margin-right: 0.6em; }
-.lcd-rf { color: #ffb300; }
-.lcd-is { color: #9aa4b2; }
-.lcd-tx { color: #3fa7ff; }
-.lcd-keys {
-  padding: 5px 10px;
-  background: #1b2027;
-  color: #9aa4b2;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.lcd-keys b { color: #3fa7ff; font-weight: 500; }
 
 /* Two columns hold down to an iPad in portrait and a phone on its side; on
    those the stacked layout put a full-width capture under the copy, so the
    screen filled a landscape phone on its own. */
 @media (max-width: 720px) {
   .hero-inner { grid-template-columns: 1fr; }
-  .lcd { font-size: clamp(0.6rem, 2.6vw, 0.8rem); }
   .hero-screen { width: 100%; max-width: 420px; justify-self: center; }
 }
 
@@ -476,7 +438,7 @@ section[id]:focus { outline: none; }
   .hero { padding-top: 28px; padding-bottom: 40px; }
   .hero-actions { margin-top: 20px; }
   .hero-spec { margin-top: 16px; }
-  .lcd { max-height: calc(100dvh - var(--nav-h) - 96px); margin: 0 auto; }
+  .hero-shot { width: auto; max-width: 100%; max-height: calc(100dvh - var(--nav-h) - 96px); margin: 0 auto; }
   .hero-screen figcaption { margin-top: 14px; }
 }
 

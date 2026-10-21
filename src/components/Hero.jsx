@@ -1,22 +1,5 @@
 import { CAN_FLASH } from '../platform.js'
-
-// Drawn, not captured: there is no screenshot off the hardware yet. The rows
-// use the monitor's real line format and colors (amber RF, grey APRS-IS, blue
-// sent). Callsigns are made up.
-const ROWS = [
-  { t: '21:51', cls: 'lcd-rf', text: 'W8ABC-10>APDR16,WIDE2-1:=4239.50N/08310.20W-' },
-  { t: '21:52', cls: 'lcd-is', text: 'KC8GHI-13>APRS,TCPIP*:@215200z4231.40N/08317.60W_270/004g009t048' },
-  { t: '21:52', cls: 'lcd-rf', text: 'N8JKL>APOT30,WIDE2-1:!4244.02N/08255.71W#PHG2360' },
-  { t: '21:53', cls: 'lcd-tx', text: 'MYCALL-7>APZRHN,WIDE1-1:!4237.60N/08303.40W[' },
-  { t: '21:53', cls: 'lcd-rf', text: 'KD8MNO-9>APAT51,WIDE1-1:`o0Ul!Zk/`"4E}_%' },
-  { t: '21:54', cls: 'lcd-rf', text: 'N0CALL-9>APLRG1,WIDE1-1:!4237.12N/08304.55W>' },
-  { t: '21:54', cls: 'lcd-is', text: 'KD8XYZ>APRS,TCPIP*:@215400z4236.00N/08301.00W_' },
-  { t: '21:55', cls: 'lcd-tx', text: 'MYCALL-7>APZRHN,WIDE1-1::N0CALL-9 :73, see you there{12' },
-  { t: '21:55', cls: 'lcd-rf', text: 'N0CALL-9>APLRG1::MYCALL-7 :ack12' },
-  { t: '21:56', cls: 'lcd-rf', text: 'W8ABC-10>APDR16,WIDE2-1:=4239.50N/08310.20W-' },
-  { t: '21:57', cls: 'lcd-is', text: 'K8DEF>APN391,qAR,W8ABC:;LECTURE *152000z4240.' },
-  { t: '21:57', cls: 'lcd-tx', text: 'MYCALL-7>APZRHN,WIDE1-1:!4237.80N/08303.10W[' },
-]
+import { withBase } from '../basePath'
 
 export default function Hero() {
   return (
@@ -40,22 +23,9 @@ export default function Hero() {
         </div>
 
         <figure className="hero-screen">
-          <div className="lcd" role="img"
-               aria-label="The Platy APRS packet monitor: a list of timestamped APRS packets, heard over RF, from APRS-IS, and sent by this station.">
-            <div className="lcd-bar" aria-hidden="true">
-              <span>MYCALL-7</span>
-              <span><b>BLE</b> · GPS · 21:57</span>
-            </div>
-            <ul className="lcd-rows" aria-hidden="true">
-              {ROWS.map((r, i) => (
-                <li key={i} className={r.cls}><time>{r.t}</time>{r.text}</li>
-              ))}
-            </ul>
-            <div className="lcd-keys" aria-hidden="true">
-              <b>Back</b> close · <b>Home</b> home · <b>Msg</b> messages · <b>Map</b> map
-            </div>
-          </div>
-          <figcaption>Packet monitor · 320 × 240 · illustration</figcaption>
+          <img className="hero-shot" src={withBase('/screenshots/monitor.png')} width="640" height="480"
+               alt="The Platy APRS packet monitor on a ThinkNode M9: a live list of APRS packets from APRS-IS." />
+          <figcaption>Packet monitor · ThinkNode M9 · 320 × 240</figcaption>
         </figure>
       </div>
     </section>
