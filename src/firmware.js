@@ -5,7 +5,7 @@ import { withBase } from './basePath'
 // version list is fetched at page load via releaseCatalog(). The release
 // workflow rewrites this line; null means platy-aprs had no stable release yet,
 // so there is no tag worth guessing at.
-export const FIRMWARE_VERSION = null
+export const FIRMWARE_VERSION = 'v0.1.2'
 export const REPO = 'oumike/platy-aprs'
 
 // Same-origin proxy path. Vite (dev) and nginx (prod) forward /firmware/<tag>/<file>
