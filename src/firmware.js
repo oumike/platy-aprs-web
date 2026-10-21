@@ -19,7 +19,7 @@ export const PROXY_BASE = withBase('/firmware')
 //   platy-aprs-<env>-<tag>.bin      full image, flash at 0x0
 //   platy-aprs-<env>-<tag>-app.bin  app only, flash at 0x10000 (keeps settings)
 export const PLATY_FIRMWARE = {
-  name: 'platy-aprs',
+  name: 'Platy APRS',
   repo: REPO,
   proxyBase: PROXY_BASE,
   assetName: (env, version) => `platy-aprs-${env}-${version}.bin`,

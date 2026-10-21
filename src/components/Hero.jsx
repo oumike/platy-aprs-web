@@ -26,7 +26,7 @@ export default function Hero() {
           <p className="eyebrow">ESP32-S3 · APRS · BLE KISS · LoRa</p>
           <h1>APRS in your pocket, no phone required</h1>
           <p className="lede">
-            platy-aprs is APRS client firmware for handheld ESP32-S3 boards. Pair
+            Platy APRS is APRS client firmware for handheld ESP32-S3 boards. Pair
             it with a Bluetooth KISS TNC or radio, or use the board's own LoRa
             radio — then beacon, message, map stations, and gate to APRS-IS,
             all from the device or its built-in web page.
@@ -41,7 +41,7 @@ export default function Hero() {
 
         <figure className="hero-screen">
           <div className="lcd" role="img"
-               aria-label="The platy-aprs packet monitor: a list of timestamped APRS packets, heard over RF, from APRS-IS, and sent by this station.">
+               aria-label="The Platy APRS packet monitor: a list of timestamped APRS packets, heard over RF, from APRS-IS, and sent by this station.">
             <div className="lcd-bar" aria-hidden="true">
               <span>MYCALL-7</span>
               <span><b>BLE</b> · GPS · 21:57</span>

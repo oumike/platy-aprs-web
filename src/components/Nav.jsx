@@ -55,7 +55,7 @@ export default function Nav({ mode, onModeChange }) {
         <img className="brand-mark" src={withBase('/favicon.svg')} alt="" width="28" height="28" />
         <div className="brands">
           <a href="#top" className="brand" aria-current="page">
-            <span><span className="brand-word">platy</span><span className="brand-dim">/aprs</span></span>
+            <span><span className="brand-word">Platy</span><span className="brand-dim"> APRS</span></span>
           </a>
         </div>
 

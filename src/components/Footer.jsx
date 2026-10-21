@@ -77,7 +77,7 @@ export default function Footer({ mark, repo }) {
         <p className="footer-links">
           <a href={`https://github.com/${repo}`} target="_blank" rel="noreferrer">Source</a>
           <a href={`https://github.com/${repo}/releases`} target="_blank" rel="noreferrer">Releases</a>
-          <a href="https://camillia.sumat.org" target="_blank" rel="noreferrer">Camillia</a>
+          <a href="https://sumat.org" target="_blank" rel="noreferrer">sumat.org</a>
         </p>
         <BuyMeACoffee />
       </div>

@@ -51,7 +51,7 @@ export default function App() {
         <Docs />
         <AI />
       </main>
-      <Footer mark="platy-aprs" repo="oumike/platy-aprs" />
+      <Footer mark="Platy APRS" repo="oumike/platy-aprs" />
     </>
   )
 }
