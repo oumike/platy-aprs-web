@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { applyTheme } from './themes.js'
 import Hero from './components/Hero.jsx'
 import Features from './components/Features.jsx'
+import Screenshots from './components/Screenshots.jsx'
 import Links from './components/Links.jsx'
 import Devices from './components/Devices.jsx'
 import Flasher from './components/Flasher.jsx'
@@ -38,6 +39,7 @@ export default function App() {
       <Nav mode={mode} onModeChange={setMode} />
       <main id="main">
         <Hero />
+        <Screenshots />
         <Features />
         <Links />
         <Devices
