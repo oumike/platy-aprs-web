@@ -1,0 +1,44 @@
+export default function Devices({ devices, title, intro }) {
+  return (
+    <section id="devices">
+      <div className="container">
+        <p className="eyebrow">Hardware</p>
+        <h2>{title}</h2>
+        <p className="measure">{intro}</p>
+
+        <div className="grid device-grid">
+          {devices.map((d) => (
+            <article className="panel device" key={d.env}>
+              <header className="device-head">
+                <h3>
+                  {d.link ? (
+                    <a href={d.link} target="_blank" rel="noreferrer">
+                      {d.name}
+                    </a>
+                  ) : (
+                    d.name
+                  )}
+                </h3>
+                <span className="device-env">{d.env}</span>
+              </header>
+              {d.desc && <p>{d.desc}</p>}
+              <p className="device-foot">
+                {d.chip && <span className="device-chip">{d.chip}</span>}
+                {d.buy && (
+                  <a
+                    className="device-buy"
+                    href={d.buy.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Buy at {d.buy.seller} <span aria-hidden="true">→</span>
+                  </a>
+                )}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

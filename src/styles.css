@@ -1,0 +1,892 @@
+/* ===========================================================================
+   platy-aprs — site styles.
+
+   Lifted from camillia-mt-web so the two sites read as siblings: rounded
+   panels on a near-black ground, monospace data, and the bracketed key legend.
+   Every color comes from --* custom properties written by themes.js, which
+   carries the firmware's own LVGL colors.
+   =========================================================================== */
+
+:root {
+  /* Vertical rhythm between sections. */
+  --section-gap: clamp(72px, 9vw, 128px);
+  --nav-h: 58px;
+  --container: 1160px;
+  --measure: 62ch;
+
+  --radius-panel: 12px;
+  --radius-screen: 16px;
+
+  --font-display: 'Martian Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Side gutters. viewport-fit=cover lets the page run under the notch and
+     home indicator of a landscape iPhone, so the gutter grows to clear them. */
+  --gutter: 24px;
+  --gutter-l: max(var(--gutter), env(safe-area-inset-left));
+  --gutter-r: max(var(--gutter), env(safe-area-inset-right));
+}
+
+/* --- Base ---------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body, #root { margin: 0; padding: 0; min-height: 100%; }
+html {
+  scroll-behavior: smooth;
+  /* iOS Safari otherwise inflates body text when the phone turns landscape. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-main);
+  background: var(--bg-main);
+  transition: background-color .25s ease, color .25s ease;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+a:hover { border-bottom-color: currentColor; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+code, pre, .kbd { font-family: var(--font-mono); }
+
+.kbd {
+  background: var(--panel-alt);
+  border: 1px solid var(--divider);
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}
+
+/* One focus ring for everything. :where() keeps specificity at zero so no
+   component rule can accidentally outrank it. */
+:where(a, button, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -100px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  transition: top .15s ease;
+}
+.skip-link:focus { top: 12px; }
+
+/* --- Type ---------------------------------------------------------------- */
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0 0 0.5em;
+  line-height: 1.12;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(1.7rem, 3vw, 2.55rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.08;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  letter-spacing: -0.035em;
+}
+
+h3 {
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+p { margin: 0 0 1em; color: var(--text-dim); }
+p:last-child { margin-bottom: 0; }
+
+.measure { max-width: var(--measure); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin: 0 0 0.9em;
+}
+
+/* --- Layout -------------------------------------------------------------- */
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter-r) 0 var(--gutter-l);
+}
+
+section { padding: var(--section-gap) 0; }
+section[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
+section[id]:focus { outline: none; }
+
+/* Alternating ground instead of a hairline between every section. */
+.band {
+  background: var(--panel-bg);
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 40px;
+}
+
+/* --- Panels -------------------------------------------------------------- */
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-panel);
+  padding: 20px 22px;
+}
+.band .panel { background: var(--bg-main); }
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--select-bg);
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.notice {
+  margin-top: 24px;
+  border-color: var(--accent);
+  color: var(--text-main);
+}
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--text-on-accent);
+  border: 1px solid var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: transform .08s ease, opacity .15s ease;
+}
+.btn:hover { opacity: 0.9; border-bottom-color: var(--accent); }
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { opacity: 0.55; cursor: default; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-main);
+  border-color: var(--divider-hi);
+}
+.btn-ghost:hover { border-bottom-color: var(--divider-hi); }
+
+.mode-toggle {
+  display: inline-flex;
+  border: 1px solid var(--divider-hi);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+  background: var(--panel-bg);
+}
+.mode-toggle button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.mode-toggle button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--text-on-accent);
+}
+.mode-toggle button[disabled] { opacity: 0.4; cursor: not-allowed; }
+.mode-toggle-sm button { padding: 4px 11px; font-size: 0.72rem; }
+
+/* --- Nav ----------------------------------------------------------------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg-main) 88%, transparent);
+  backdrop-filter: saturate(130%) blur(10px);
+  border-bottom: 1px solid var(--divider);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: var(--nav-h);
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter-r) 0 var(--gutter-l);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: -0.04em;
+  color: var(--text-main);
+}
+.brand-mark { flex: none; width: 26px; height: 26px; border-radius: 6px; margin-right: -4px; }
+.brand-dim { color: var(--text-dim); font-weight: 400; }
+.brands { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.nav-spacer { flex: 1; }
+
+.nav-links { display: flex; align-items: center; gap: 18px; }
+.nav-links ul {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 6px 9px;
+  border-radius: 7px;
+  border-bottom: 0;
+  color: var(--text-dim);
+}
+@media (hover: hover) { .nav-links a:hover { color: var(--text-main); background: var(--panel-alt); } }
+.nav-links a b { color: var(--accent); font-weight: 600; }
+
+.nav-external { padding-left: 14px; border-left: 1px solid var(--divider); }
+.nav-external a b { color: inherit; }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 38px;
+  height: 34px;
+  padding: 0 8px;
+  border: 1px solid var(--divider-hi);
+  border-radius: 8px;
+}
+.nav-burger span {
+  display: block;
+  height: 1.5px;
+  background: var(--text-main);
+  border-radius: 2px;
+}
+
+@media (max-width: 940px) {
+  .nav-burger { display: flex; }
+  .nav-links {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 14px var(--gutter-r) 20px var(--gutter-l);
+    max-height: calc(100vh - var(--nav-h));
+    max-height: calc(100dvh - var(--nav-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--divider);
+  }
+  .nav-links-open { display: flex; }
+  .nav-links ul { flex-direction: column; align-items: stretch; gap: 2px; }
+  .nav-links a { padding: 10px 12px; font-size: 0.9rem; }
+  .nav-external {
+    padding-left: 0;
+    padding-top: 10px;
+    border-left: 0;
+    border-top: 1px solid var(--divider);
+  }
+}
+
+@media (max-width: 460px) {
+  :root { --gutter: 16px; }
+  .brand span { font-size: 0.82rem; }
+  /* Two full brands, the mode toggle and the burger do not fit a phone, so
+     the page you are not on shrinks to its suffix and the mark goes. */
+  .brands { gap: 10px; }
+  .brand-mark { display: none; }
+  .brand:not([aria-current]) .brand-word { display: none; }
+  .mode-toggle-sm button { padding: 4px 9px; }
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  padding-top: clamp(44px, 6vw, 76px);
+  padding-bottom: clamp(48px, 6vw, 76px);
+  background:
+    radial-gradient(120% 70% at 80% -10%, var(--panel-strong) 0%, transparent 62%);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.hero-copy { min-width: 0; }
+.hero .lede {
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  max-width: 52ch;
+  margin-bottom: 0;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.hero-spec {
+  margin: 22px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.hero-screen {
+  min-width: 0;
+  margin: 0;
+}
+.hero-screen figcaption {
+  margin: 22px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* There is no capture off the hardware yet, so the hero draws the monitor
+   screen as text at the panel's 320x240, in the firmware's LVGL colors:
+   amber for RF, grey for APRS-IS, blue for what we sent. */
+.lcd {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-screen);
+  border: 1px solid var(--divider-hi);
+  background: #12161b;
+  color: #e6ebf1;
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 1.35vw, 0.8rem);
+  line-height: 1.45;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--panel-alt) 55%, transparent),
+    0 24px 60px -24px rgb(0 0 0 / 0.55);
+}
+.lcd-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: #1b2027;
+  color: #9aa4b2;
+}
+.lcd-bar b { color: #3fa7ff; font-weight: 500; }
+.lcd-rows {
+  flex: 1;
+  margin: 0;
+  padding: 8px 10px;
+  list-style: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.lcd-rows li { overflow: hidden; text-overflow: ellipsis; }
+.lcd-rows time { color: #9aa4b2; margin-right: 0.6em; }
+.lcd-rf { color: #ffb300; }
+.lcd-is { color: #9aa4b2; }
+.lcd-tx { color: #3fa7ff; }
+.lcd-keys {
+  padding: 5px 10px;
+  background: #1b2027;
+  color: #9aa4b2;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.lcd-keys b { color: #3fa7ff; font-weight: 500; }
+
+/* Two columns hold down to an iPad in portrait and a phone on its side; on
+   those the stacked layout put a full-width capture under the copy, so the
+   screen filled a landscape phone on its own. */
+@media (max-width: 720px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .lcd { font-size: clamp(0.6rem, 2.6vw, 0.8rem); }
+  .hero-screen { width: 100%; max-width: 420px; justify-self: center; }
+}
+
+/* Short landscape screens: tighter hero so the copy and the screen both fit. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { padding-top: 28px; padding-bottom: 40px; }
+  .hero-actions { margin-top: 20px; }
+  .hero-spec { margin-top: 16px; }
+  .lcd { max-height: calc(100dvh - var(--nav-h) - 96px); margin: 0 auto; }
+  .hero-screen figcaption { margin-top: 14px; }
+}
+
+/* --- Features ------------------------------------------------------------ */
+
+.feature-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.feature-grid h3 { color: var(--text-main); }
+.feature-grid p { margin: 0; font-size: 0.94rem; }
+
+/* --- Devices ------------------------------------------------------------- */
+
+.device-grid { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+
+/* Cards stretch to the tallest in the row, so pin the chip rule to the bottom
+   rather than leaving a ragged gap under each description. */
+.device { display: flex; flex-direction: column; }
+
+/* Board names wrap to two lines at some widths, so the build env always sits
+   on its own line rather than sometimes trailing the title and sometimes not. */
+.device-head { margin-bottom: 14px; }
+.device-head h3 { margin: 0 0 5px; }
+.device-head a { color: var(--text-main); }
+.device-head a:hover { color: var(--accent); }
+
+.device-env {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.device p { margin: 0; font-size: 0.92rem; }
+
+.device-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto !important;
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+.device-chip { letter-spacing: 0.08em; color: var(--text-dim); }
+.device-buy { color: var(--accent); white-space: nowrap; }
+
+/* --- Flasher ------------------------------------------------------------- */
+
+.flasher {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 28px;
+  width: 75%;
+  margin: 40px 0 0;
+}
+
+.flasher esp-web-install-button {
+  --esp-tools-button-color: var(--text-on-accent);
+  --esp-tools-button-background-color: var(--accent);
+  --esp-tools-button-border-color: var(--accent);
+}
+
+.flasher-main { min-width: 0; }
+
+.flasher-selects {
+  display: grid;
+  gap: 12px;
+}
+
+.flasher-select {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 420px;
+}
+.flasher-select span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-dim);
+}
+.flasher-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background-color: var(--select-bg);
+  border: 1px solid var(--divider-hi);
+  border-radius: 9px;
+  padding: 11px 38px 11px 14px;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-dim) 50%),
+                    linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.flasher-version-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.flasher-version-row select {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.flasher-row-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 1px solid var(--divider-hi);
+  border-radius: 9px;
+  background: var(--panel-alt);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0 11px;
+  white-space: nowrap;
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+.flasher-row-btn:hover {
+  background: var(--select-bg);
+}
+
+.flasher-row-btn[disabled] {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.flasher-notes-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--bg-main) 34%, #000);
+  backdrop-filter: blur(4px);
+}
+
+.flasher-notes-modal-panel {
+  width: min(1100px, calc(100vw - 32px));
+  max-height: 80vh;
+  max-height: 80dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg);
+  border: 1px solid var(--divider-hi);
+  border-radius: var(--radius-panel);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.flasher-notes-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.flasher-notes-modal-head strong {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text-main);
+}
+
+.flasher-notes-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flasher-notes-modal-actions a {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+.flasher-notes-modal-close {
+  border: 1px solid var(--divider-hi);
+  border-radius: 999px;
+  background: var(--panel-alt);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 7px 14px;
+}
+
+.flasher-notes-modal-close:hover {
+  background: var(--select-bg);
+}
+
+.flasher-notes-modal-body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--text-dim);
+  white-space: pre-wrap;
+  max-height: calc(80dvh - 96px);
+  overflow: auto;
+  padding: 6px 0 2px;
+  border-top: 1px solid var(--divider);
+}
+
+
+.flasher-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.browser-note {
+  margin: 10px 0 0;
+  font-size: 0.84rem;
+  color: var(--text-dim);
+}
+
+.flasher-device-image {
+  justify-self: end;
+  align-self: center;
+  max-width: 210px;
+}
+.flasher-device-image img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+  .flasher {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .flasher-device-image { justify-self: center; order: -1; }
+}
+
+/* --- First-run steps ----------------------------------------------------- */
+
+.steps {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+  max-width: 760px;
+}
+.steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  padding: 20px 0;
+  border-top: 1px solid var(--divider);
+}
+.steps li:last-child { border-bottom: 1px solid var(--divider); }
+.steps h3 { margin: 0 0 6px; color: var(--text-main); }
+.steps p { margin: 0; font-size: 0.94rem; }
+
+.step-n {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  padding-top: 3px;
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+footer {
+  padding: 40px 0 56px;
+  border-top: 1px solid var(--divider);
+  color: var(--text-dim);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+}
+.footer-inner p { margin: 0; }
+
+.footer-mark {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-main);
+}
+
+.footer-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-left: auto !important;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+.footer-keys b { color: var(--accent); font-weight: 500; }
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+/* Buy Me a Coffee's own button, which arrives with its own styling. This only
+   keeps it centred against the rest of the row. */
+.footer-bmc {
+  display: inline-flex;
+  align-items: center;
+}
+/* The fallback while the script loads, or if it never does. Matches the links
+   beside it rather than pretending to be the button. */
+.footer-bmc-link {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .footer-keys { margin-left: 0 !important; order: 3; }
+}
+
+/* --- Motion -------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- esp-web-tools flasher dialog ---------------------------------------- */
+/* The install dialog is Material Web inside a shadow DOM, so none of the site's
+   own selectors reach it. Custom properties do: they inherit through shadow
+   boundaries, and esp-web-tools mounts the dialog on <body> (connect.js).
+
+   But inheritance alone is not enough. esp-web-tools' own styles.js pins a light
+   palette on the dialog's :host -- surface and its containers to #fff,
+   secondary-container to #e0e0e0, --text-color to near-black -- and a :host
+   declaration on the element beats anything inherited into it. It does NOT pin
+   --md-sys-color-on-surface, which is why theming through :root alone produced
+   the worst of both: white surface, near-white text.
+
+   So the mapping is declared twice. On :root for everything that inherits
+   normally, and on ewt-install-dialog itself, where a rule from the outer
+   document outranks the component's own :host block. Everything in the dialog --
+   buttons, the select, the text field, the progress ring, the list -- draws from
+   this same token set, and applyTheme() rewrites the site variables underneath
+   it, so the dialog re-themes live with the rest of the page. */
+:root,
+ewt-install-dialog {
+  /* Surfaces. The dialog body is surface-container-high; the rest carry menus,
+     the select's dropdown and the text field's fill. All four are pinned to
+     white upstream, so all four have to be named here. */
+  --md-sys-color-surface: var(--panel-bg);
+  --md-sys-color-surface-container: var(--panel-bg);
+  --md-sys-color-surface-container-low: var(--panel-bg);
+  --md-sys-color-surface-container-high: var(--panel-alt);
+  --md-sys-color-surface-container-highest: var(--panel-strong);
+
+  /* Text on those surfaces. --text-color is esp-web-tools' own name for the
+     same idea and is pinned to rgba(0,0,0,.6) upstream. */
+  --md-sys-color-on-surface: var(--text-main);
+  --md-sys-color-on-surface-variant: var(--text-dim);
+  --text-color: var(--text-main);
+
+  /* Accents: buttons, links, focus rings, the progress ring, the checkbox.
+     Upstream pins primary to #03a9f4 and secondary-container to #e0e0e0. */
+  --md-sys-color-primary: var(--accent);
+  --md-sys-color-on-primary: var(--text-on-accent);
+  --md-sys-color-primary-container: var(--panel-strong);
+  --md-sys-color-secondary: var(--accent);
+  --md-sys-color-secondary-container: var(--select-bg);
+  --md-sys-color-on-secondary-container: var(--text-main);
+  --md-sys-color-tertiary: var(--accent);
+  --md-sys-color-tertiary-container: var(--panel-alt);
+
+  /* Rules and edges. */
+  --md-sys-color-outline: var(--divider-hi);
+  --md-sys-color-outline-variant: var(--divider);
+
+  /* Inverse pair, used by the snackbar-style surfaces. */
+  --md-sys-color-inverse-surface: var(--text-main);
+  --md-sys-color-inverse-on-surface: var(--bg-main);
+
+  /* Scrim and shadow stay black whatever the theme: Material applies its own
+     opacity to them, and tinting them with a palette colour muddies the dim
+     behind the dialog rather than darkening it. */
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
+
+  /* Failure states. Deliberately not drawn from the palette -- a flash that
+     went wrong should read as wrong in any theme, including the ones whose
+     accent is itself red. --danger-color is esp-web-tools' own name for it. */
+  --md-sys-color-error: #e0564f;
+  --md-sys-color-on-error-container: var(--text-main);
+  --danger-color: #e0564f;
+}

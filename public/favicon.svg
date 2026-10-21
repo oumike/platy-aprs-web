@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88">
+  <rect width="88" height="88" rx="14" fill="#12161b"/>
+  <!-- radio waves -->
+  <g fill="none" stroke="#3fa7ff" stroke-width="4" stroke-linecap="round">
+    <path d="M60 18a14 14 0 0 1 10 10"/>
+    <path d="M62 8a24 24 0 0 1 18 18" opacity="0.6"/>
+  </g>
+  <!-- tail -->
+  <ellipse cx="17" cy="58" rx="12" ry="7" fill="#6d4c33" transform="rotate(-12 17 58)"/>
+  <!-- body -->
+  <ellipse cx="40" cy="56" rx="22" ry="15" fill="#8d6748"/>
+  <!-- feet -->
+  <ellipse cx="32" cy="70" rx="6" ry="3" fill="#6d4c33"/>
+  <ellipse cx="50" cy="70" rx="6" ry="3" fill="#6d4c33"/>
+  <!-- head -->
+  <circle cx="56" cy="46" r="11" fill="#8d6748"/>
+  <!-- bill -->
+  <path d="M62 44 h14 a6 6 0 0 1 0 12 h-14 z" fill="#2a313b"/>
+  <!-- eye -->
+  <circle cx="57" cy="42" r="2.2" fill="#f3f6fa"/>
+  <circle cx="57.6" cy="42" r="1.1" fill="#12161b"/>
+  <!-- antenna -->
+  <line x1="52" y1="36" x2="56" y2="22" stroke="#ffb300" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="56" cy="21" r="2.6" fill="#ffb300"/>
+</svg>
