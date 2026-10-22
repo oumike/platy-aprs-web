@@ -3,7 +3,7 @@
 Information site and browser-based firmware flasher for
 [platy-aprs](https://github.com/oumike/platy-aprs) — APRS client firmware for
 ESP32-S3 handhelds (Elecrow ThinkNode M9, Seeed Wio Tracker L2, LilyGo T-Deck
-Plus, Attaky Mesh Deck, Elecrow CrowPanel Advance 3.5, LilyGo T-LoRa Pager) that talks KISS over Bluetooth LE to a TNC or radio, or LoRa APRS on the
+Plus, Attaky Mesh Deck, Elecrow CrowPanel Advance 3.5 and 5.0, LilyGo T-LoRa Pager, LilyGo T-Deck Pro) that talks KISS over Bluetooth LE to a TNC or radio, or LoRa APRS on the
 board's own radio.
 
 Live at <https://platy.sumat.org>. Built the same way as

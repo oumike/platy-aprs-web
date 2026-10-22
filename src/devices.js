@@ -50,6 +50,15 @@ export const DEVICES = [
     image: withBase('/devices/crowpanel-35.jpg'),
   },
   {
+    env: 'crowpanel-50',
+    buy: { seller: 'Elecrow', href: 'https://www.elecrow.com/crowpanel-advance-5-0-hmi-esp32-ai-display-800x480-ips-artificial-intelligent-touch-screen.html' },
+    name: 'Elecrow CrowPanel Advance 5.0',
+    chip: 'ESP32-S3',
+    desc: 'SX1262 LoRa module, 5″ 800×480 IPS touch panel. Set the function DIP switch to the wireless module, which takes the microSD pins. No battery, GPS, sound or microSD. For V1.2 and later boards. Newest and not yet tested on hardware.',
+    link: 'https://www.elecrow.com/crowpanel-advance-5-0-hmi-esp32-ai-display-800x480-ips-artificial-intelligent-touch-screen.html',
+    image: withBase('/devices/crowpanel-50.jpg'),
+  },
+  {
     env: 'tlora-pager',
     buy: { seller: 'Rokland', href: 'https://store.rokland.com/products/lilygo-t-lora-pager-us-915-mhz-lora-esp32-s3-handheld-aiot-programmable-development-device-k257-01' },
     name: 'LilyGo T-LoRa Pager',
@@ -57,5 +66,14 @@ export const DEVICES = [
     desc: 'SX1262 LoRa, 480×222 TFT, QWERTY keyboard, scroll wheel, GPS, speaker, microSD. Newest and not yet tested on hardware.',
     link: 'https://lilygo.cc/',
     image: withBase('/devices/tlora-pager.png'),
+  },
+  {
+    env: 'tdeck-pro',
+    buy: { seller: 'Rokland', href: 'https://store.rokland.com/products/lilygo-t-deck-pro-a7682e-4g-us-915-mhz' },
+    name: 'LilyGo T-Deck Pro',
+    chip: 'ESP32-S3',
+    desc: 'SX1262 LoRa, 3.1″ 240×320 e-paper with touch, QWERTY keyboard, GPS, microSD. Black-and-white UI built for e-paper. New and lightly tested.',
+    link: 'https://lilygo.cc/products/t-deck-pro',
+    image: withBase('/devices/tdeck-pro.jpg'),
   },
 ]
