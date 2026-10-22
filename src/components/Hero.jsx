@@ -19,7 +19,7 @@ export default function Hero() {
             <a className={CAN_FLASH ? 'btn btn-ghost' : 'btn'} href="https://github.com/oumike/platy-aprs"
                target="_blank" rel="noreferrer">View source on GitHub</a>
           </div>
-          <p className="hero-spec">4 boards · BLE TNC or LoRa · iGate · digipeater · offline maps</p>
+          <p className="hero-spec">5 boards · BLE TNC or LoRa · iGate · digipeater · offline maps</p>
         </div>
 
         <figure className="hero-screen">

@@ -40,4 +40,13 @@ export const DEVICES = [
     // A reset straight out of download mode can hang this board.
     flashNote: 'After flashing, power-cycle the Mesh Deck to boot it; it can hang on the reset that follows the flash.',
   },
+  {
+    env: 'crowpanel-35',
+    buy: { seller: 'Muzi Works', href: 'https://muzi.works/products/elecrow-crowpanel-advance-3-5' },
+    name: 'Elecrow CrowPanel Advance 3.5',
+    chip: 'ESP32-S3',
+    desc: 'SX1262 LoRa module, 3.5″ 480×320 IPS touch panel, microSD. No battery, GPS or sound; double-tap the screen to wake it. Newest and least tested.',
+    link: 'https://muzi.works/products/elecrow-crowpanel-advance-3-5',
+    image: withBase('/devices/crowpanel-35.jpg'),
+  },
 ]
