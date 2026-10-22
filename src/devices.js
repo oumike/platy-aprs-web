@@ -45,8 +45,17 @@ export const DEVICES = [
     buy: { seller: 'Muzi Works', href: 'https://muzi.works/products/elecrow-crowpanel-advance-3-5' },
     name: 'Elecrow CrowPanel Advance 3.5',
     chip: 'ESP32-S3',
-    desc: 'SX1262 LoRa module, 3.5″ 480×320 IPS touch panel, microSD. No battery, GPS or sound; double-tap the screen to wake it. Newest and least tested.',
+    desc: 'SX1262 LoRa module, 3.5″ 480×320 IPS touch panel, microSD. No battery, GPS or sound; double-tap the screen to wake it. Less tested.',
     link: 'https://muzi.works/products/elecrow-crowpanel-advance-3-5',
     image: withBase('/devices/crowpanel-35.jpg'),
+  },
+  {
+    env: 'tlora-pager',
+    buy: { seller: 'Rokland', href: 'https://store.rokland.com/products/lilygo-t-lora-pager-us-915-mhz-lora-esp32-s3-handheld-aiot-programmable-development-device-k257-01' },
+    name: 'LilyGo T-LoRa Pager',
+    chip: 'ESP32-S3',
+    desc: 'SX1262 LoRa, 480×222 TFT, QWERTY keyboard, scroll wheel, GPS, speaker, microSD. Newest and not yet tested on hardware.',
+    link: 'https://lilygo.cc/',
+    image: withBase('/devices/tlora-pager.png'),
   },
 ]
