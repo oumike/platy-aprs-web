@@ -236,6 +236,7 @@ export default function Flasher({ product, devices }) {
                 </button>
               )}
             </div>
+            {device.flashNote && <p className="browser-note">{device.flashNote}</p>}
             {versionStale ? (
               <p className="browser-note">
                 Couldn't reach the GitHub API release list

@@ -30,4 +30,13 @@ export const DEVICES = [
     link: 'https://lilygo.cc/products/t-deck-plus-1',
     image: withBase('/devices/tdeck.png'),
   },
+  {
+    env: 'mesh-deck',
+    name: 'Attaky Mesh Deck',
+    chip: 'ESP32-S3',
+    desc: 'SX1262 LoRa, 2.0″ 320×240 touch display, 48-key keyboard module, D-pad, ATGM336H GPS. No microSD, so no offline map tiles, packet log or SD backups. Newer and less tested than the M9 and Wio.',
+    link: 'https://github.com/Attaky-Module',
+    // A reset straight out of download mode can hang this board.
+    flashNote: 'After flashing, power-cycle the Mesh Deck to boot it; it can hang on the reset that follows the flash.',
+  },
 ]
