@@ -3,8 +3,8 @@
 const LINKS = [
   {
     tag: 'Bluetooth',
-    title: 'KISS over BLE to your radio',
-    body: <>Scan, pick the radio, and it connects and reconnects on its own. Works with the Mobilinkd TNC3/TNC4, the BTECH/Vero VR-N76 and VR-N7600, and any BLE KISS device — the service UUIDs are configurable and default to the common <span className="kbd">00000001-ba2a-…</span> service.</>,
+    title: 'Bluetooth KISS TNC',
+    body: <>Scan, pick your TNC or radio, and it connects and reconnects automatically. Works with the Mobilinkd TNC3/TNC4, the BTECH/Vero VR-N76 and VR-N7600, and other BLE KISS devices. The service UUIDs are configurable and default to the common <span className="kbd">00000001-ba2a-…</span> service.</>,
   },
   {
     tag: 'LoRa',
@@ -18,10 +18,10 @@ export default function Links() {
     <section id="links" className="band">
       <div className="container">
         <p className="eyebrow">Radio link</p>
-        <h2>Two ways onto the air</h2>
+        <h2>Bluetooth TNC or LoRa</h2>
         <p className="measure">
-          Transmitting on either needs an amateur radio licence. Stick to the
-          band your board's antenna and RF path were built for.
+          Transmitting on either needs an amateur radio licence. Only use the
+          band your board's antenna and RF path are designed for.
         </p>
         <div className="grid feature-grid">
           {LINKS.map(l => (

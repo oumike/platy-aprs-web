@@ -5,7 +5,7 @@ const SHOTS = [
   {
     src: '/screenshots/home.png',
     title: 'Home',
-    body: 'Every screen is one keypress away. The status bar shows APRS-IS traffic, the Bluetooth TNC, GPS, Wi-Fi, battery and the time.',
+    body: 'Each screen has a one-key shortcut. The status bar shows APRS-IS traffic, the Bluetooth TNC, GPS, Wi-Fi, battery and the time.',
     alt: 'The Platy APRS home menu: Stations, Messages, Monitor, Send beacon now, Map and Status & connection info, under a status bar of connection icons, battery and time.',
   },
   {
@@ -27,7 +27,7 @@ export default function Screenshots() {
     <section id="screens" className="band">
       <div className="container">
         <p className="eyebrow">On the device</p>
-        <h2>What it looks like</h2>
+        <h2>Screenshots</h2>
         <div className="grid shot-grid">
           {SHOTS.map(s => (
             <figure className="shot" key={s.src}>

@@ -1,5 +1,6 @@
 import { CAN_FLASH } from '../platform.js'
 import { withBase } from '../basePath'
+import { DEVICES } from '../devices.js'
 
 export default function Hero() {
   return (
@@ -7,19 +8,19 @@ export default function Hero() {
       <div className="container hero-inner">
         <div className="hero-copy">
           <p className="eyebrow">ESP32-S3 · APRS · BLE KISS · LoRa</p>
-          <h1>APRS in your pocket, no phone required</h1>
+          <h1>APRS firmware for ESP32-S3 handhelds</h1>
           <p className="lede">
-            Platy APRS is APRS client firmware for handheld ESP32-S3 boards. Pair
-            it with a Bluetooth KISS TNC or radio, or use the board's own LoRa
-            radio — then beacon, message, map stations, and gate to APRS-IS,
-            all from the device or its built-in web page.
+            Platy APRS runs on handheld ESP32-S3 boards. It connects to a
+            Bluetooth KISS TNC or radio, or uses the board's own LoRa radio. You
+            can beacon, send messages, see stations on a map, and gate to
+            APRS-IS from the device or from its web page.
           </p>
           <div className="hero-actions">
             {CAN_FLASH && <a className="btn" href="#flash">Flash from your browser</a>}
             <a className={CAN_FLASH ? 'btn btn-ghost' : 'btn'} href="https://github.com/oumike/platy-aprs"
                target="_blank" rel="noreferrer">View source on GitHub</a>
           </div>
-          <p className="hero-spec">6 boards · BLE TNC or LoRa · iGate · digipeater · offline maps</p>
+          <p className="hero-spec">{DEVICES.length} boards · BLE TNC or LoRa · iGate · digipeater · offline maps</p>
         </div>
 
         <figure className="hero-screen">

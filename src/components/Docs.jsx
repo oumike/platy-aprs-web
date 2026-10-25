@@ -5,7 +5,7 @@ export const STEPS = [
   },
   {
     title: 'Open the config page',
-    body: <>Browse to <a href="http://192.168.4.1">192.168.4.1</a>. There is no captive portal, so type the address yourself. The device serves the page; no internet needed.</>,
+    body: <>Browse to <a href="http://192.168.4.1">192.168.4.1</a>. There is no captive portal, so type the address yourself. The page is served by the device, so no internet connection is needed.</>,
   },
   {
     title: 'Set your callsign and Wi-Fi',
@@ -17,11 +17,11 @@ export const STEPS = [
   },
 ]
 
-export default function Docs({ steps = STEPS, title = 'On the air in four steps' }) {
+export default function Docs({ steps = STEPS, title = 'First-time setup' }) {
   return (
     <section id="docs">
       <div className="container">
-        <p className="eyebrow">First run</p>
+        <p className="eyebrow">Getting started</p>
         <h2>{title}</h2>
         <ol className="steps" role="list">
           {steps.map((s, i) => (

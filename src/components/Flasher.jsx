@@ -142,7 +142,7 @@ export default function Flasher({ product, devices }) {
         <h2>Flash from your browser</h2>
         <p className="measure">
           Plug the device in over USB, pick the board and firmware version, and
-          this page writes the full image straight to the device. To update
+          this page writes the full image to it. To update
           without touching your settings, download the app-only image and flash
           it at <span className="kbd">0x10000</span>.
         </p>
@@ -150,7 +150,7 @@ export default function Flasher({ product, devices }) {
           <div className="panel notice">
             <strong>Web Serial isn't available in this browser.</strong>{' '}
             Use a recent Chrome, Edge, or Opera on desktop. iOS Safari and
-            Firefox don't expose Web Serial — on those, download the{' '}
+            Firefox don't support Web Serial. On those, download the{' '}
             <span className="kbd">.bin</span> and flash it at 0x0 with{' '}
             <span className="kbd">esptool.py --chip esp32s3 write_flash 0x0 &lt;file&gt;</span>.
           </div>
@@ -203,7 +203,7 @@ export default function Flasher({ product, devices }) {
                       <a
                         className="flasher-row-btn"
                         href={firmwareUrl(product, device.env, version, product.appAssetName)}
-                        title="App only, flash at 0x10000 — keeps your settings"
+                        title="App only, flash at 0x10000. Keeps your settings."
                         download
                       >
                         App-only .bin
@@ -239,8 +239,8 @@ export default function Flasher({ product, devices }) {
             {device.flashNote && <p className="browser-note">{device.flashNote}</p>}
             {versionStale ? (
               <p className="browser-note">
-                Couldn't reach the GitHub API release list
-                {product.fallbackVersion ? <> — falling back to {product.fallbackVersion}.</> : '.'}
+                Couldn't load the release list from GitHub
+                {product.fallbackVersion ? <>, showing {product.fallbackVersion} instead.</> : '.'}
               </p>
             ) : catalog !== null && !versions.length && (
               <p className="browser-note">

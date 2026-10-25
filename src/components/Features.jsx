@@ -1,8 +1,8 @@
 const FEATURES = [
   {
     tag: 'Messaging',
-    title: 'Messages that get acked',
-    body: 'Send and receive APRS messages from the device or the web page. Outgoing messages retry until acked; incoming ones are acked, de-duplicated, and announced with a beep and a banner. Five quick messages are one keypress away.',
+    title: 'APRS messaging',
+    body: 'Send and receive APRS messages from the device or the web page. Outgoing messages are retried until they are acked. Incoming messages are acked, de-duplicated, and announced with a beep and a banner. You can save five quick messages and send each with one key.',
   },
   {
     tag: 'Beacon',
@@ -11,33 +11,33 @@ const FEATURES = [
   },
   {
     tag: 'Stations',
-    title: 'Monitor, stations, favorites',
-    body: 'A live packet monitor and a station list with details for everything heard. Star the stations and conversations you care about: favorites sort first and never fall off a full list.',
+    title: 'Packet monitor and station list',
+    body: 'A live packet monitor, and a list of every station heard with its details. Starred stations and conversations sort to the top and are not dropped when the list is full.',
   },
   {
     tag: 'Maps',
-    title: 'OpenStreetMap, cached offline',
-    body: 'Stations with a position are drawn on OSM tiles — amber for RF, grey for APRS-IS, blue for weather, purple for objects. Tiles are cached on the SD card, so areas you have viewed keep working off Wi-Fi.',
+    title: 'Offline maps',
+    body: 'Stations with a position are shown on OpenStreetMap tiles: amber for RF, grey for APRS-IS, blue for weather, purple for objects. Tiles are cached on the SD card, so areas you have already viewed work without Wi-Fi.',
   },
   {
     tag: 'APRS-IS',
     title: 'iGate and digipeater',
-    body: 'On Wi-Fi it logs in to APRS-IS, gates heard RF to the Internet, and can pass messages back to stations heard locally. An optional WIDE1-1 fill-in digipeater suppresses duplicates.',
+    body: 'On Wi-Fi it logs in to APRS-IS, gates RF traffic to the Internet, and can pass messages back to stations heard on RF. An optional WIDE1-1 fill-in digipeater suppresses duplicates.',
   },
   {
     tag: 'Config',
-    title: 'Set it up from a browser',
+    title: 'Web configuration',
     body: 'The device serves its own config page: callsign, Wi-Fi, radio link, beacon, APRS-IS. On first boot it opens a setup access point with a join QR code on screen. An admin password is optional.',
   },
   {
     tag: 'Logging',
     title: 'Packet log on microSD',
-    body: 'Every packet heard and sent is appended to a dated log on the SD card in TNC2 format, ready to download or delete from the web page. Message history lives there too.',
+    body: 'Every packet heard and sent is appended to a dated log on the SD card in TNC2 format. You can download or delete logs from the web page. Message history is stored there too.',
   },
   {
     tag: 'Backup',
-    title: 'Backups that move between devices',
-    body: 'Download a JSON backup, upload one to restore, or keep backups on the SD card. A fresh device that finds backups on its card offers to restore one before anything else.',
+    title: 'Backup and restore',
+    body: 'Download a JSON backup, upload one to restore, or keep backups on the SD card. On first boot, a new device that finds backups on its card offers to restore one.',
   },
 ]
 
@@ -45,8 +45,8 @@ export default function Features() {
   return (
     <section id="features">
       <div className="container">
-        <p className="eyebrow">What it does</p>
-        <h2>A stand-alone APRS station</h2>
+        <p className="eyebrow">Features</p>
+        <h2>What it does</h2>
         <div className="grid feature-grid">
           {FEATURES.map(f => (
             <div className="panel" key={f.title}>

@@ -44,7 +44,7 @@ export default function App() {
         <Links />
         <Devices
           devices={DEVICES}
-          title="Six boards, one firmware"
+          title="Supported boards"
           intro={CAN_FLASH
             ? 'Each board is its own PlatformIO env in the same source tree. Pick yours in the flasher and it writes the matching image.'
             : 'Each board is its own PlatformIO env in the same source tree. Open this page on a desktop browser to flash one.'}
